@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between mb-4">
+    <h1>Student Table</h1>
+    <button type="button" class="btn btn-primary" (click)="navigateToCreate()">
+      Create Student
+    </button>
+  </div>
+  <table class="table">
+    <thead>
+      <h1 *ngIf="!isResultLoaded">Loading.................</h1>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Course</th>
+        <th scope="col">Fee</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (StudentItem of StudentArray; track StudentItem.id) {
+      <tr>
+        <td>{{ StudentItem.id }}</td>
+        <td>{{ StudentItem.stname }}</td>
+        <td>{{ StudentItem.course }}</td>
+        <td>{{ StudentItem.fee }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="setUpdate(StudentItem)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="setDelete(StudentItem)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
